@@ -1,3 +1,4 @@
 <main>
-  <todo-list></todo-list>
+  <div *ngIf="!show"><todo-login (messageEvent)="showMessage($event)"></todo-login></div>
+  <div *ngIf="show"><todo-list></todo-list></div>
 </main>

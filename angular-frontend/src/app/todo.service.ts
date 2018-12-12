@@ -9,28 +9,42 @@ export class TodoService {
 
   constructor(private http: Http) { }
 
+  createAuthorizationHeader(headers: Headers) {
+    headers.append('Content-Type','application/json')
+    headers.append('Authorization','Basic ' + btoa("user:password")); 
+  }
+
   getTodos():  Promise<Todo[]> {
-    return this.http.get(this.baseUrl + '/api/todos/')
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    console.log(headers);
+    return this.http.get(this.baseUrl + '/api/todos/',{headers: headers})
       .toPromise()
       .then(response => response.json() as Todo[])
       .catch(this.handleError);
   }
 
   createTodo(todoData: Todo): Promise<Todo> {
-    return this.http.post(this.baseUrl + '/api/todos/', todoData)
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.post(this.baseUrl + '/api/todos/', todoData,{headers:headers})
       .toPromise().then(response => response.json() as Todo)
       .catch(this.handleError);
   }
 
   updateTodo(todoData: Todo): Promise<Todo> {
-    return this.http.put(this.baseUrl + '/api/todos/' + todoData.id, todoData)
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.put(this.baseUrl + '/api/todos/' + todoData.id, todoData,{headers:headers})
       .toPromise()
       .then(response => response.json() as Todo)
       .catch(this.handleError);
   }
 
   deleteTodo(id: string): Promise<any> {
-    return this.http.delete(this.baseUrl + '/api/todos/' + id)
+    let headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.delete(this.baseUrl + '/api/todos/' + id,{headers:headers})
       .toPromise()
       .catch(this.handleError);
   }

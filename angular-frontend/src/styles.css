@@ -3,9 +3,9 @@
 body {
   font-size: 18px;
   line-height: 1.58;
-  background: #d53369;
-  background: -webkit-linear-gradient(to left, #cbad6d, #d53369);
-  background: linear-gradient(to left, #cbad6d, #d53369); 
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(to left, #65cb6e, #33d54e);
+  background: linear-gradient(to left, #65cb6e, #33d54e); 
   color: #333;
 }
 

@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  show:boolean = false;
+
+  showMessage($event){
+    this.show = $event;
+  }
 }

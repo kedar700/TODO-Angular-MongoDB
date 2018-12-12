@@ -19,6 +19,8 @@ public class Todo {
     @Indexed(unique=true)
     private String title;
 
+    private String createdBy;
+
     private Boolean completed = false;
 
     private Date createdAt = new Date();
@@ -37,6 +39,14 @@ public class Todo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCreatedBy() {
+        return id;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     public String getTitle() {
